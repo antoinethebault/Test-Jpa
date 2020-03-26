@@ -13,18 +13,96 @@ import javax.persistence.TypedQuery;
  */
 @Entity
 public class Livre {
+	
 	/**id : Integer*/
 	@Id
-	Integer id;
+	private Integer id;
 	
 	/**titre : String*/
 	@Column(name="TITRE")
-	String titre;
+	private String titre;
 	
 	/**auteur : String*/
 	@Column(name="AUTEUR")
-	String auteur;
+	private String auteur;
 	
+	/**Constructor
+	 * 
+	 */
+	public Livre() {
+		super();
+	}
+
+	
+	
+	/**Constructor
+	 * @param id
+	 * @param titre
+	 * @param auteur
+	 */
+	public Livre(Integer id, String titre, String auteur) {
+		super();
+		this.id = id;
+		this.titre = titre;
+		this.auteur = auteur;
+	}
+
+
+
+	/**Getter
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	/**Getter
+	 * @return the titre
+	 */
+	public String getTitre() {
+		return titre;
+	}
+
+
+
+	/**Getter
+	 * @return the auteur
+	 */
+	public String getAuteur() {
+		return auteur;
+	}
+
+
+
+	/**Setter
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+
+	/**Setter
+	 * @param titre the titre to set
+	 */
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+
+
+	/**Setter
+	 * @param auteur the auteur to set
+	 */
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
+
+
+
 	/**
 	 * getLivre : retourne un livre en fonction de son id
 	 * @param entityManager
