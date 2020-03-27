@@ -135,7 +135,7 @@ public class Emprunt {
 
 	@Override
 	public String toString() {
-		return this.id+" "+this.date_debut+" "+this.date_fin+" "+this.delai;
+		return "EMPRUNT "+this.id+" - date debut : "+this.date_debut+" - date fin : "+this.date_fin+" - delai : "+this.delai;
 	}
 	
 	

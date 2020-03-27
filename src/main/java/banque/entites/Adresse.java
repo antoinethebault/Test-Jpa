@@ -2,19 +2,32 @@ package banque.entites;
 
 import javax.persistence.*;
 
+/**
+ * @author antoinethebault
+ *Adresse
+ */
 @Entity
 @Embeddable
 public class Adresse {
+	/**id : Integer*/
 	@Id
-	Integer id;
+	private Integer id;
+	
+	/**numero : Integer*/
 	@Column(name="numero")
-	Integer numero;
+	private Integer numero;
+	
+	/**rue : String*/
 	@Column(name="rue")
-	String rue;
+	private String rue;
+	
+	/**codePostal : Integer*/
 	@Column(name="codePostal")
-	Integer codePostal;
+	private Integer codePostal;
+	
+	/**ville : String*/
 	@Column(name="ville")
-	String ville;
+	private String ville;
 	
 	
 	/**Constructor

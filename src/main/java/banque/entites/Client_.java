@@ -4,30 +4,52 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 import java.util.Set;
+import banque.entites.Compte;
+import java.util.HashSet;
 
 @Entity
 public class Client_ {
+	/**id : Integer*/
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
+	
+	/**nom : String*/
 	@Column(name="nom")
-	String nom;
+	private String nom;
+	
+	/**dateNaissance : LocalDate*/
 	@Column(name="dateNaissance")
-	LocalDate dateNaissance;
+	private LocalDate dateNaissance;
+	
+	/**adresse : Adresse*/
 	@Embedded
 	private Adresse adresse;
 	
+	/**banque : Banque*/
 	@ManyToOne 
 	@JoinColumn(name="banqueId") 
 	private Banque banque;
 	
+	/**comptes : Set<Compte>*/
 	@ManyToMany 
 	@JoinTable(name="compteAssocie",
-			joinColumns= @JoinColumn(name="id_client", referencedColumnName="ID"), 
-			inverseJoinColumns= @JoinColumn(name="id_compte", referencedColumnName="ID")
+			joinColumns= @JoinColumn(name="id_client", referencedColumnName="id"), 
+			inverseJoinColumns= @JoinColumn(name="id_compte", referencedColumnName="id")
 			)
 	private Set<Compte> comptes;
+
+	
+	
+	/**Constructor
+	 * 
+	 */
+	public Client_() {
+		super();
+		comptes = new HashSet<>();
+		banque = new Banque();
+	}
 
 	/**Constructor
 	 * @param id
@@ -36,6 +58,8 @@ public class Client_ {
 	 */
 	public Client_(Integer id, String nom, LocalDate dateNaissance) {
 		super();
+		comptes = new HashSet<>();
+		banque = new Banque();
 		this.id = id;
 		this.nom = nom;
 		this.dateNaissance = dateNaissance;

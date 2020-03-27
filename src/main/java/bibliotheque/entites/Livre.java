@@ -134,6 +134,6 @@ public class Livre {
 	
 	@Override
 	public String toString () {
-		return Integer.toString(id)+" "+titre+" "+auteur;
+		return "LIVRE "+Integer.toString(id)+" - Titre : "+titre+" - Auteur : "+auteur;
 	}
 }

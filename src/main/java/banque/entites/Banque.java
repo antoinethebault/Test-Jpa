@@ -5,13 +5,21 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.HashSet;
 
+/**
+ * @author antoinethebault
+ *Banque
+ */
 @Entity
 public class Banque {
+	/**id : Integer*/
 	@Id
-	Integer id;
-	@Column(name="nom")
-	String nom;
+	private Integer id;
 	
+	/**nom : String*/
+	@Column(name="nom")
+	private String nom;
+	
+	/**clients : Set<Client_>*/
 	@OneToMany(mappedBy="banque")
 	private Set<Client_> clients;
 	
@@ -20,7 +28,7 @@ public class Banque {
 	 */
 	public Banque() {
 		super();
-		clients = new HashSet<Client_>();
+		clients = new HashSet<>();
 	}
 
 	/**Constructor
@@ -30,7 +38,7 @@ public class Banque {
 	 */
 	public Banque(Integer id, String nom, Set<Client_> clients) {
 		super();
-		clients = new HashSet<Client_>();
+		clients = new HashSet<>();
 		this.id = id;
 		this.nom = nom;
 		this.clients = clients;
