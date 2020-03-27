@@ -74,11 +74,11 @@ public class TestBanque {
 		Virement virement1 = new Virement(LocalDate.of(2020,1,1), 15.00, "achat", "beneficiaire1");
 		Virement virement2 = new Virement(LocalDate.of(2020,1,1), 15.00, "achat2", "beneficiaire1");
 		HashSet<Operation> virements = new HashSet<>();
-		virements.add(virement1);
-		virements.add(virement2);
+		//virements.add(virement1);
+		//virements.add(virement2);
 		virement1.setCompte(compte1);
 		virement2.setCompte(compte1);
-		compte1.setOperations(virements);
+		//compte1.setOperations(virements);
 		
 		//creation des operations
 		Operation operation1 = new Operation(LocalDate.of(2020,1,1), 15.00, "achat");
