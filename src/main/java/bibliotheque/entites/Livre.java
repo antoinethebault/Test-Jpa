@@ -1,4 +1,4 @@
-package entites;
+package bibliotheque.entites;
 
 
 import javax.persistence.Column;
@@ -127,7 +127,8 @@ public class Livre {
 	 * @return
 	 */
 	public static Livre getLivreTitre(EntityManager entityManager, String titre) {
-		TypedQuery<Livre> query = entityManager.createQuery("SELECT l FROM Livre l WHERE l.titre='"+titre+"'", Livre.class);
+		TypedQuery<Livre> query = entityManager.createQuery("SELECT l FROM Livre l WHERE l.titre=:titre", Livre.class);
+		query.setParameter("titre", titre);
 		return query.getResultList().get(0);
 	}
 	

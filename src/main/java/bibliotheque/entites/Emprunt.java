@@ -1,4 +1,4 @@
-package entites;
+package bibliotheque.entites;
 
 
 import java.time.LocalDate;
@@ -59,7 +59,8 @@ public class Emprunt {
 		Emprunt emprunt = entityManager.find(Emprunt.class,id);
 		LOGGER.log(Level.INFO, emprunt.toString());
 		
-		TypedQuery<Livre> query = entityManager.createQuery("SELECT new entites.Livre(l.id, l.titre, l.auteur) FROM Livre l, Compo c, Emprunt e WHERE l.id=c.id_liv AND c.id_emp=e.id AND e.id='"+id+"'", Livre.class);
+		TypedQuery<Livre> query = entityManager.createQuery("SELECT new bibliotheque.entites.Livre(l.id, l.titre, l.auteur) FROM Livre l, Compo c, Emprunt e WHERE l.id=c.id_liv AND c.id_emp=e.id AND e.id=:id", Livre.class);
+		query.setParameter("id", id);
 		List<Livre> liste = query.getResultList();
 		for (Livre livre : liste)
 			LOGGER.log(Level.INFO, livre.toString());

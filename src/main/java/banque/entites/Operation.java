@@ -1,4 +1,4 @@
-package banque;
+package banque.entites;
 
 import java.time.LocalDate;
 import javax.persistence.*;

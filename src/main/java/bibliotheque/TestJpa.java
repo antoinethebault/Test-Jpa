@@ -1,3 +1,4 @@
+package bibliotheque;
 
 
 import java.util.logging.Level;
@@ -7,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import entites.Client;
-import entites.Emprunt;
-import entites.Livre;
+import bibliotheque.entites.Client;
+import bibliotheque.entites.Emprunt;
+import bibliotheque.entites.Livre;
 
 public class TestJpa {
 
