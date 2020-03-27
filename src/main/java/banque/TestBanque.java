@@ -76,6 +76,8 @@ public class TestBanque {
 		HashSet<Operation> virements = new HashSet<>();
 		virements.add(virement1);
 		virements.add(virement2);
+		virement1.setCompte(compte1);
+		virement2.setCompte(compte1);
 		compte1.setOperations(virements);
 		
 		//creation des operations
