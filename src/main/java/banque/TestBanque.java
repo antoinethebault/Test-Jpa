@@ -15,8 +15,8 @@ public class TestBanque {
 		
 		Client_ client = new Client_(1, "Albert", LocalDate.of(1980,12,12));
 		Client_ client2 = new Client_(2, "Renaud", LocalDate.of(1980,12,12));
-		client.setAdresse(new Adresse(1,2,"rue des lilas",22250,"Dinan"));
-		client2.setAdresse(new Adresse(1,3,"rue des lilas",22250,"Dinan"));
+		client.setAdresse(new Adresse(1,2,"rue des lilas",22100,"Dinan"));
+		client2.setAdresse(new Adresse(1,3,"rue des lilas",22100,"Dinan"));
 		EntityTransaction tx1 = entityManager.getTransaction();
 		tx1.begin();
 		entityManager.persist(client);
