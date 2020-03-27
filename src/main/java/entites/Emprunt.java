@@ -1,5 +1,6 @@
 package entites;
 
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -9,12 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Set;
 
 /**
  * @author antoinethebault
@@ -47,10 +48,7 @@ public class Emprunt {
 	@JoinTable(name="Compo",
 			joinColumns= @JoinColumn(name="ID_EMP", referencedColumnName="ID"), inverseJoinColumns= @JoinColumn(name="ID_LIV", referencedColumnName="ID")
 			)
-	
-	@ManyToOne 
-	@JoinColumn(name="ID_CLIENT") 
-	private Client client;
+	private Set<Livre> livres;
 	
 	private static final Logger LOGGER = Logger.getLogger(Emprunt.class.getName());
 	

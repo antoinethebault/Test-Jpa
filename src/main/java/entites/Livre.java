@@ -1,10 +1,14 @@
 package entites;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.TypedQuery;
+
+import java.util.Set;
 
 
 /**
@@ -25,6 +29,9 @@ public class Livre {
 	/**auteur : String*/
 	@Column(name="AUTEUR")
 	private String auteur;
+	
+	@ManyToMany(mappedBy="livres") 
+	private Set<Emprunt> emprunts;
 	
 	/**Constructor
 	 * 
