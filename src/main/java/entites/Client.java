@@ -4,12 +4,9 @@ package entites;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.Id;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 /**
  * @author antoinethebault
@@ -29,6 +26,9 @@ public class Client {
 	/**prenom : String*/
 	@Column(name="PRENOM")
 	private String prenom;
+	
+	@OneToMany(mappedBy="client")
+	private Set<Emprunt> emprunts;
 	
 	private static final Logger LOGGER = Logger.getLogger(Client.class.getName());
 
@@ -82,7 +82,7 @@ public class Client {
 	}
 	
 	public static void getEmprunts(EntityManager entityManager, Integer id) {
-		TypedQuery<Emprunt> query = entityManager.createQuery("SELECT e FROM Emprunt e, Client c WHERE e.id_client=c.id AND c.id='"+id+"'", Emprunt.class);
+		TypedQuery<Emprunt> query = entityManager.createQuery("SELECT e FROM Emprunt e, Client c WHERE e.client.id=c.id AND c.id='"+id+"'", Emprunt.class);
 		List<Emprunt> liste = query.getResultList();
 		for (Emprunt emprunt : liste)
 			LOGGER.log(Level.INFO, emprunt.toString());

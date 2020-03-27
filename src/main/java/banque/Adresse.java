@@ -15,6 +15,16 @@ public class Adresse {
 	Integer codePostal;
 	@Column(name="ville")
 	String ville;
+	
+	
+	/**Constructor
+	 * 
+	 */
+	public Adresse() {
+		super();
+	}
+
+
 	/**Constructor
 	 * @param id
 	 * @param numero

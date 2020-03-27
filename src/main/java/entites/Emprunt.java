@@ -3,14 +3,7 @@ package entites;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -40,9 +33,13 @@ public class Emprunt {
 	@Column(name="DELAI")
 	private Integer delai;
 	
-	/**id_client : Integer*/
-	@Column(name="ID_CLIENT")
-	private Integer id_client;
+	///**id_client : Integer*/
+	//@Column(name="ID_CLIENT")
+	//private Integer id_client;
+	
+	@ManyToOne 
+	@JoinColumn(name="ID_CLIENT") 
+	private Client client;
 	
 	@ManyToMany 
 	@JoinTable(name="Compo",
@@ -134,23 +131,10 @@ public class Emprunt {
 		this.delai = delai;
 	}
 
-	/**Getter
-	 * @return the id_client
-	 */
-	public Integer getId_client() {
-		return id_client;
-	}
-
-	/**Setter
-	 * @param id_client the id_client to set
-	 */
-	public void setId_client(Integer id_client) {
-		this.id_client = id_client;
-	}
 
 	@Override
 	public String toString() {
-		return this.id+" "+this.date_debut+" "+this.date_fin+" "+this.delai+" "+this.id_client;
+		return this.id+" "+this.date_debut+" "+this.date_fin+" "+this.delai;
 	}
 	
 	
