@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Operation {
 	/**id : Integer*/
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**date : LocalDate*/

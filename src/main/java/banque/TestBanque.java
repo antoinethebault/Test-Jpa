@@ -98,8 +98,10 @@ public class TestBanque {
 		entityManager.persist(assuranceVie);
 		entityManager.persist(livretA);
 		entityManager.persist(compte1);
-//		//entityManager.persist(operation1);
-//		//entityManager.persist(operation2);
+		entityManager.persist(operation1);
+		entityManager.persist(operation2);
+		entityManager.persist(virement1);
+		entityManager.persist(virement2);
 		tx1.commit();
 		
 	}
