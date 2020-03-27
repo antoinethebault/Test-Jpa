@@ -10,9 +10,12 @@ import java.util.Set;
  *Compte
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name="compte")
 public class Compte {
 	/**id : Integer*/
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**numero : String*/
@@ -25,7 +28,7 @@ public class Compte {
 	
 	/**clients : Set<Client_>*/
 	@ManyToMany(mappedBy="comptes") 
-	private Set<Client_> clients;
+	private Set<ClientBanque> clients;
 	
 	/**operations : Set<Operation>*/
 	@OneToMany(mappedBy="compte")
@@ -45,11 +48,10 @@ public class Compte {
 	 * @param numero
 	 * @param solde
 	 */
-	public Compte(Integer id, String numero, Double solde) {
+	public Compte(String numero, Double solde) {
 		super();
 		clients = new HashSet<>();
 		operations = new HashSet<>();
-		this.id = id;
 		this.numero = numero;
 		this.solde = solde;
 	}
@@ -78,7 +80,7 @@ public class Compte {
 	/**Getter
 	 * @return the clients
 	 */
-	public Set<Client_> getClients() {
+	public Set<ClientBanque> getClients() {
 		return clients;
 	}
 
@@ -113,7 +115,7 @@ public class Compte {
 	/**Setter
 	 * @param clients the clients to set
 	 */
-	public void setClients(Set<Client_> clients) {
+	public void setClients(Set<ClientBanque> clients) {
 		this.clients = clients;
 	}
 
@@ -124,12 +126,13 @@ public class Compte {
 		this.operations = operations;
 	}
 	
-	public void addClient(Client_ client) {
+	/**
+	 * addClient ajoute un client
+	 * @param client
+	 */
+	public void addClient(ClientBanque client) {
 		clients.add(client);
 		client.getComptes().add(this);
 	}
-	
-	
-	
 	
 }

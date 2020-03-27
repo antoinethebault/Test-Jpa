@@ -8,62 +8,16 @@ import banque.entites.Compte;
 import java.util.HashSet;
 
 @Entity
-public class Client_ {
+@Table(name="client_banque")
+public class ClientBanque {
 	/**id : Integer*/
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 	
 	/**nom : String*/
 	@Column(name="nom")
 	private String nom;
-	
-	/**dateNaissance : LocalDate*/
-	@Column(name="dateNaissance")
-	private LocalDate dateNaissance;
-	
-	/**adresse : Adresse*/
-	@Embedded
-	private Adresse adresse;
-	
-	/**banque : Banque*/
-	@ManyToOne 
-	@JoinColumn(name="banqueId") 
-	private Banque banque;
-	
-	/**comptes : Set<Compte>*/
-	@ManyToMany 
-	@JoinTable(name="compteAssocie",
-			joinColumns= @JoinColumn(name="id_client", referencedColumnName="id"), 
-			inverseJoinColumns= @JoinColumn(name="id_compte", referencedColumnName="id")
-			)
-	private Set<Compte> comptes;
-
-	
-	
-	/**Constructor
-	 * 
-	 */
-	public Client_() {
-		super();
-		comptes = new HashSet<>();
-		banque = new Banque();
-	}
-
-	/**Constructor
-	 * @param id
-	 * @param nom
-	 * @param dateNaissance
-	 */
-	public Client_(Integer id, String nom, LocalDate dateNaissance) {
-		super();
-		comptes = new HashSet<>();
-		banque = new Banque();
-		this.id = id;
-		this.nom = nom;
-		this.dateNaissance = dateNaissance;
-	}
 
 	/**Getter
 	 * @return the id
@@ -79,6 +33,26 @@ public class Client_ {
 		return nom;
 	}
 
+	/**Setter
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**Setter
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	
+	
+	/**dateNaissance : LocalDate*/
+	@Column(name="dateNaissance")
+	private LocalDate dateNaissance;
+
 	/**Getter
 	 * @return the dateNaissance
 	 */
@@ -86,11 +60,84 @@ public class Client_ {
 		return dateNaissance;
 	}
 
+	/**Setter
+	 * @param dateNaissance the dateNaissance to set
+	 */
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	/**adresse : Adresse*/
+	@Embedded
+	private Adresse adresse;
+
 	/**Getter
 	 * @return the adresse
 	 */
 	public Adresse getAdresse() {
 		return adresse;
+	}
+
+	/**Setter
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	
+	/**banque : Banque*/
+	@ManyToOne 
+	@JoinColumn(name="banqueId") 
+	private Banque banque;
+
+	
+	
+	/**comptes : Set<Compte>*/
+	@ManyToMany 
+	@JoinTable(name="compteAssocie",
+			joinColumns= @JoinColumn(name="id_client", referencedColumnName="id"), 
+			inverseJoinColumns= @JoinColumn(name="id_compte", referencedColumnName="id")
+			)
+	private Set<Compte> comptes;
+
+	
+	
+	/**Constructor
+	 * 
+	 */
+	public ClientBanque() {
+		super();
+		comptes = new HashSet<>();
+		//banque = new Banque();
+	}
+
+	/**Constructor
+	 * @param id
+	 * @param nom
+	 * @param dateNaissance
+	 */
+	public ClientBanque(Integer id, String nom, LocalDate dateNaissance) {
+		super();
+		comptes = new HashSet<>();
+//		banque = new Banque();
+		this.id = id;
+		this.nom = nom;
+		this.dateNaissance = dateNaissance;
+	}
+	
+	
+	/**Constructor
+	 * @param nom
+	 * @param dateNaissance
+	 * @param adresse
+	 */
+	public ClientBanque(String nom, LocalDate dateNaissance) {
+		super();
+		comptes = new HashSet<>();
+		this.nom = nom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
 	}
 
 	/**Getter
@@ -107,33 +154,6 @@ public class Client_ {
 		return comptes;
 	}
 
-	/**Setter
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	/**Setter
-	 * @param nom the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	/**Setter
-	 * @param dateNaissance the dateNaissance to set
-	 */
-	public void setDateNaissance(LocalDate dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
-	/**Setter
-	 * @param adresse the adresse to set
-	 */
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
 
 	/**Setter
 	 * @param banque the banque to set

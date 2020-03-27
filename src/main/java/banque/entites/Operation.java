@@ -8,6 +8,8 @@ import javax.persistence.*;
  *Operation
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name="operation")
 public class Operation {
 	/**id : Integer*/
 	@Id
@@ -35,7 +37,7 @@ public class Operation {
 	 */
 	public Operation() {
 		super();
-		compte=new Compte();
+		//compte=new Compte();
 	}
 
 	/**Constructor
@@ -44,10 +46,9 @@ public class Operation {
 	 * @param montant
 	 * @param motif
 	 */
-	public Operation(Integer id, LocalDate date, Double montant, String motif) {
+	public Operation(LocalDate date, Double montant, String motif) {
 		super();
-		compte=new Compte();
-		this.id = id;
+		//compte=new Compte();
 		this.date = date;
 		this.montant = montant;
 		this.motif = motif;

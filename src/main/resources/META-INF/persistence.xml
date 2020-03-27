@@ -6,7 +6,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	<persistence-unit name="pu_essai"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
+		
 		<properties>
 
 			<property name="javax.persistence.jdbc.url"
@@ -25,11 +25,14 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	<persistence-unit name="pu_banque"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>banque.entites.Adresse</class>
-		<class>banque.entites.Banque</class>
-		<class>banque.entites.Client_</class>
-		<class>banque.entites.Compte</class>
-		<class>banque.entites.Operation</class>
+ 		<class>banque.entites.Adresse</class>
+			<class>banque.entites.Banque</class>
+		<class>banque.entites.ClientBanque</class>
+ 		<class>banque.entites.Compte</class>
+ 		<class>banque.entites.Operation</class>
+ 		<class>banque.entites.LivretA</class>
+ 		<class>banque.entites.AssuranceVie</class>
+ 		<class>banque.entites.Virement</class>
 		<properties>
 
 			<!-- desactiver l'autodetection des classes de type @Entity -->

@@ -10,9 +10,11 @@ import java.util.HashSet;
  *Banque
  */
 @Entity
+@Table(name="banque")
 public class Banque {
 	/**id : Integer*/
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**nom : String*/
@@ -21,7 +23,7 @@ public class Banque {
 	
 	/**clients : Set<Client_>*/
 	@OneToMany(mappedBy="banque")
-	private Set<Client_> clients;
+	private Set<ClientBanque> clients;
 	
 	/**Constructor
 	 * 
@@ -36,10 +38,9 @@ public class Banque {
 	 * @param nom
 	 * @param clients
 	 */
-	public Banque(Integer id, String nom, Set<Client_> clients) {
+	public Banque(String nom, Set<ClientBanque> clients) {
 		super();
 		clients = new HashSet<>();
-		this.id = id;
 		this.nom = nom;
 		this.clients = clients;
 	}

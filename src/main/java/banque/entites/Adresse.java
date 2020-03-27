@@ -6,12 +6,11 @@ import javax.persistence.*;
  * @author antoinethebault
  *Adresse
  */
-@Entity
 @Embeddable
 public class Adresse {
 	/**id : Integer*/
-	@Id
-	private Integer id;
+	//@Id
+	//private Integer id;
 	
 	/**numero : Integer*/
 	@Column(name="numero")
@@ -45,9 +44,8 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(Integer id, Integer numero, String rue, Integer codePostal, String ville) {
+	public Adresse(Integer numero, String rue, Integer codePostal, String ville) {
 		super();
-		this.id = id;
 		this.numero = numero;
 		this.rue = rue;
 		this.codePostal = codePostal;
